@@ -2,11 +2,11 @@
 CC	:= gcc
 CXXFLAGS := -g
     
-OBJECTS	:= dep/read.o dep/write.o #main.o
+OBJECTS	:= dep/read.o dep/write.o dep/File.o #main.o
 INCLUDES = -I./includes
 LIBDIR = lib
 LIBS = -lfile_partition
-all: dep/read.o dep/write.o lib/libfile_partition.a src/main.exe
+all: dep/read.o dep/write.o dep/File.o lib/libfile_partition.a src/main.exe
 
 dep/%.o: src/%.c 
 	$(CC) -c -o $@ $< $(CXXFLAGS) $(INCLUDES)

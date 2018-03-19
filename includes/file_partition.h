@@ -10,7 +10,9 @@ int open_file_desc(char *filename, int *filedesc);
 //close the open FD
 int close_file_desc(int *filedesc);
 //write data to the FD
-int write_data(int *filedesc);
+
+int write_data_test(int *filedesc);
+int write_string_top(int *filedesc, char *data, int size);
 //read data from the FD
 int read_data(int *filedesc);
 

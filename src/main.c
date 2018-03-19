@@ -2,10 +2,14 @@
 
 int main()
 {
-  int fd;
+  int fd, rtncode=0;
   open_file_desc("test.txt", &fd);
   printf("\nfd=%i",fd);
-  write_data(&fd);
+  char *txt = "this is a test of write_string_top\n";
+  rtncode = write_string_top(&fd, txt, strlen(txt));
+
+  printf("\n rtncode = %d",rtncode);
+//  write_data(&fd);
 //  close_file_desc(&fd);
 //  fd = open_file_desc("test.txt");
   read_data(&fd);

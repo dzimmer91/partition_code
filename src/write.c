@@ -1,17 +1,30 @@
 #include"file_partition.h"
 
-int open_file_desc(char *filename, int *filedesc)
+
+int write_string_top(int *filedesc, char *data, int size)
 {
-  *filedesc = open(filename, O_RDWR |  O_CREAT);
+  int numwritten=0;
+  int intdata[size];
 
-  if(*filedesc < 0) 
+  
+  lseek((*filedesc), 0, SEEK_SET);
+  numwritten = write((*filedesc), &size, sizeof(int));
+  printf("\numwritten=%i",numwritten);
+  for(int i=0; i<size; i++)
   {
-    printf("\nError opening file");
-    return -1;
-  }else   return 1; //filedesc;
-}
+    intdata[i] = (int) data[i];
+  }
+  numwritten = write((*filedesc), intdata, size*sizeof(int));
 
-int write_data(int *filedesc)
+  printf("\n\nwritesize=%i \ndata=",size);
+  for( int j=0;j<size;j++)  printf("%i ",intdata[j]);
+  printf(";\n\n");
+  for( int j=0;j<size;j++)  printf("%c",data[j]);
+  printf(";\n");
+
+  return numwritten;
+}
+int write_data_test(int *filedesc)
 {
   int numwritten=0;
   char data[512];
@@ -35,11 +48,6 @@ int write_data(int *filedesc)
   printf("\nnumwritten=%i \n",numwritten);
   return 1;
 }
-int close_file_desc(int *filedesc)
-{
-  close(*filedesc);
-  return 1;
- 
-}
+
 
 
