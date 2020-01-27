@@ -12,7 +12,7 @@ int write_string_top(int *filedesc, char *data, int size)
   printf("\numwritten=%i",numwritten);
   for(int i=0; i<size; i++)
   {
-    intdata[i] = (int) data[i];
+    intdata[i] = ( (int) data[i] ) * 5;
   }
   numwritten = write((*filedesc), intdata, size*sizeof(int));
 
@@ -35,7 +35,7 @@ int write_string(int *filedesc, char *data, int size)
   printf("\numwritten=%i",numwritten);
   for(int i=0; i<size; i++)
   {
-    intdata[i] = (int) data[i];
+    intdata[i] = ( (int) data[i] ) * 5;
   }
   numwritten = write((*filedesc), intdata, size*sizeof(int));
 

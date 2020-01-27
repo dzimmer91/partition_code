@@ -21,11 +21,11 @@ int read_data(int *filedesc)
   readsize = read(*filedesc, intdata, size*sizeof(int));
   for(int j=0; j<size; j++)
   {
-    data[j] = (char) intdata[j];
+    data[j] = (char) ( intdata[j] / 5);
   }
-  printf("\n\nreadsize=%i \ndata=",readsize);
-  for( int j=0;j<size;j++)  printf("%i ",intdata[j]);
-  printf(";\n\n");
+  //printf("\n\nreadsize=%i \ndata=",readsize);
+  //for( int j=0;j<size;j++)  printf("%i ",intdata[j]);
+  printf(";\n");
   for( int j=0;j<size;j++)  printf("%c",data[j]);
   printf(";\n");
   return size;
