@@ -4,7 +4,7 @@ int open_file_desc(char *filename, int *filedesc)
 {
   *filedesc = open(filename, O_RDWR |  O_CREAT);
 
-  if(*filedesc < 0) 
+  if(*filedesc < 0)
   {
     printf("\nError opening file");
     return -1;
@@ -16,5 +16,3 @@ int close_file_desc(int *filedesc)
   return 1;
  
 }
-
-
