@@ -1,13 +1,17 @@
 #include"file_partition.h"
 
 
+
 int read_data(int *filedesc)
 {
   int readsize=0, size=0;
 
-  lseek(*filedesc, 0, SEEK_SET);
   readsize = read(*filedesc, &size, sizeof(int));
-  printf("\nSize=%i",size);
+  if(readsize < 1){
+    printf("\nread_data readsize=%d",readsize);
+    return -1;
+  }
+  printf("\nread_data Size=%d",size);
   char data[size];
   int intdata[size];
   for(int i=0; i<sizeof(data); i++)

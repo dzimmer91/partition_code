@@ -13,6 +13,9 @@ int close_file_desc(int *filedesc);
 
 int write_data_test(int *filedesc);
 int write_string_top(int *filedesc, char *data, int size);
+int write_string(int *filedesc, char *data, int size);
 //read data from the FD
 int read_data(int *filedesc);
 
+int find_last_data(int *filedesc);
+int find_file_num(int *filedesc, int filenumber);
