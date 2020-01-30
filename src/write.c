@@ -25,6 +25,45 @@ int write_string_top(int *filedesc, char *data, int size)
   return numwritten;
 }
 
+int write_file(int *filedesc, char *file_location)
+{
+  FILE *input_File;
+  int filesize = 0, numwritten = 0;
+
+  input_File = fopen(file_location, "rb");
+  if (input_File == NULL) return -1;
+
+  fseek(input_File, 0, SEEK_END);
+  filesize = ftell(input_File);
+
+  numwritten = write((*filedesc), &filesize, sizeof(int));
+  if(numwritten > 0){
+    printf("\numwritten=%i",numwritten);
+  }else{
+    printf("Error: writing file size to FD\n" );
+    fclose(input_File);
+    return -1;
+  }
+  //todo need to check to X size for writing file in blocks incase file is larger then mem;
+  int intdata[filesize];
+  char data;
+  fseek(input_File, 0, SEEK_SET);
+
+  for(int i=0; i<filesize; i++)
+  {
+    data = fgetc(input_File);
+    intdata[i] = ( (int) data ) * 5;
+  }
+  numwritten = write((*filedesc), intdata, filesize*sizeof(int));
+
+  //printf("\n\nwritesize=%i \ndata=",filesize);
+  //for( int j=0;j<filesize;j++)  printf("%i ",intdata[j]);
+  //printf(";\n\n");
+  fclose(input_File);
+  return numwritten;
+}
+
+
 int write_string(int *filedesc, char *data, int size)
 {
   int numwritten=0;
