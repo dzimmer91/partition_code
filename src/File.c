@@ -8,7 +8,9 @@ int open_file_desc(char *filename, int *filedesc)
   {
     printf("\nError opening file");
     return -1;
-  }else   return 1; //filedesc;
+  }else{
+    return 1; //filedesc;
+  }
 }
 
 int close_file_desc(int *filedesc)
