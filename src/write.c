@@ -56,9 +56,6 @@ int write_file(int *filedesc, char *file_location)
   }
   numwritten = write((*filedesc), intdata, filesize*sizeof(int));
 
-  //printf("\n\nwritesize=%i \ndata=",filesize);
-  //for( int j=0;j<filesize;j++)  printf("%i ",intdata[j]);
-  //printf(";\n\n");
   fclose(input_File);
   return numwritten;
 }
@@ -68,7 +65,6 @@ int write_string(int *filedesc, char *data, int size)
 {
   int numwritten=0;
   int intdata[size];
-
 
   numwritten = write((*filedesc), &size, sizeof(int));
   printf("\numwritten=%i",numwritten);

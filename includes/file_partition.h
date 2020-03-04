@@ -1,3 +1,5 @@
+#ifndef file_partition_h
+#define file_partition_h
 #include<unistd.h>
 #include<fcntl.h>
 #include<stdio.h>
@@ -21,3 +23,4 @@ int read_data(int *filedesc);
 
 int find_last_data(int *filedesc);
 int find_file_num(int *filedesc, int filenumber);
+#endif

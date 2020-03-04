@@ -32,7 +32,6 @@ int read_data(int *filedesc)
 
 }
 
-
 int read_data_test(int *filedesc)
 {
   int readsize=0;
